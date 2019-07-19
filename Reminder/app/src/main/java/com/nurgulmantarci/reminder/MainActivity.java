@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         myDbHelper=new DbHelper(context);
         db=myDbHelper.getWritableDatabase();
 
