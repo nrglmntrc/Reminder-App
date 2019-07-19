@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<resources>
+
+    <string name="app_name">Netsum Hatırlatıcı</string>
+
+    <string name="action_settings">Ayarlar</string>
+
+    <string name="title_activity_create_note">Yeni Not Oluştur</string>
+
+    <string name="detail">Detay</string>
+
+    <string name="alarm">Alarm</string>
+    <string name="notify">Bildirim</string>
+    <string name="nothing">Uyarı Yok</string>
+
+    <string name="title_activity_information">Not Ayrıntısı</string>
+
+    <string name="title_activity_edit__note">Not Düzenle</string>
+
+    <string name="New">Yeni Not Oluştur</string>
+
+    <string name="back">Geri Dön</string>
+
+    <string name="save">Notu Kaydet</string>
+
+    <string name="edit">Notu Düzenle</string>
+
+    <string name="discard">Notu Sil</string>
+
+    <string name="note_type_text">Kategori:</string>
+
+    <string name="title_activity_alert">Uyarı</string>
+
+    <string name="Not_Set">Ayarlanmadı</string>
+
+    <string name="hour_minutes">HH:mm</string>
+
+    <string name="alert_title">title</string>"
+
+    <string name="Alertnotifty">"Bildirim: "</string>
+
+    <string name="delete_title">Seçilen Not silinsin mi?</string>
+
+    <string name="delete_message">Emin misiniz?</string>
+
+    <string name="yes">Evet</string>
+
+    <string name="no">Hayır</string>
+
+    <string name="row_id">rowID</string>
+
+    <string name="alarm_active">Bir Uyarı Eklendi</string>
+
+    <string name="title_hint">Başlığı Giriniz</string>
+
+    <string name="hint_description">Açıklamayı Giriniz</string>
+
+    <string name="set_alert">Alarm</string>
+
+    <string name="set_notify">Bildirim</string>
+
+    <string name="set_nothing">UyarıYok</string>
+
+    <string name="textview_date">Tarihi Seç</string>
+
+    <string name="txt_time">Zamanı Seç:</string>
+
+    <string name="txt_edit_hint">Başlığı Gir</string>
+
+    <string name="detail_hint">Açıklamayı Gir</string>
+
+    <string name="type_note">Kategori:</string>
+
+    <string name="view_title">Not Başlığı</string>
+
+    <string name="view_detail">Açıklama</string>
+
+    <string name="note_type">Kategori</string>
+
+    <string name="type_list_entry">Kısa Metin</string>
+
+    <string name="time_vie">testzamanı</string>
+
+    <string name="alarm_text">Alarm: </string>
+
+    <string name="dateformate">dd/MM/yyyy</string>
+
+    <string name="Not_Set_Alert">Ayarlanmadı</string>
+
+    <string name="ok">Tamam</string>
+
+    <string name="title">baslik</string>
+
+    <string name="alert_content">uyarı_içeriği</string>
+    <string name="question_alert">Alarm eklemek ister misiniz?</string>
+    <string name="question_noify">Bildirim Almak istermisiniz?</string>
+
+    <string name="alert_text">Uyarı:</string>
+
+    <string name="okey">Tamam</string>
+
+    <string name="delay">Ertele</string>
+
+    <string name="delayMessage">Alarm 5 Dakika Sonraya Ertelendi.</string>
+
+</resources>
