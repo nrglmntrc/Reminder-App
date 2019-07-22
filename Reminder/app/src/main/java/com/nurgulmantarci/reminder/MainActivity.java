@@ -16,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
@@ -51,11 +53,18 @@ public class MainActivity extends AppCompatActivity {
         final String[] column={myDbHelper.C_ID,myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
         final Cursor cursor=db.query(myDbHelper.TABLE_NAME,column,null,null,null,null,null);
 
-        String[] from={myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
-        int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
-        final SimpleCursorAdapter cursorAdapter=new SimpleCursorAdapter(context, R.layout.list_entry,cursor,from,to, 0);
+        ArrayList<Task> taskList=new ArrayList<>();
+        while(cursor!=null){
+            Task task=new Task();
+            task.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.TITLE)));
+            taskList.add(task);
+        }
+     //   String[] from={myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
+     //   int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
+     //   final SimpleCursorAdapter cursorAdapter=new SimpleCursorAdapter(context, R.layout.list_entry_underline,cursor,from,to, 0);
 
-        listView.setAdapter(cursorAdapter);
+        MyListviewAdapter adapter= new MyListviewAdapter(context,taskList);
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
