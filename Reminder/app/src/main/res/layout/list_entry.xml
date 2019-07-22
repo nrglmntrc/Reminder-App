@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:orientation="vertical"
-    android:background="@android:color/white">
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="fill_parent">
 
         <TextView
@@ -84,8 +83,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:text="testdate"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/holo_red_dark"
-        android:text="testdate"/>
+        android:textColor="@android:color/holo_red_dark" />
 
 </LinearLayout>
