@@ -54,10 +54,12 @@ public class MainActivity extends AppCompatActivity {
         final Cursor cursor=db.query(myDbHelper.TABLE_NAME,column,null,null,null,null,null);
 
         ArrayList<Task> taskList=new ArrayList<>();
+        cursor.moveToFirst();
         while(cursor!=null){
             Task task=new Task();
             task.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.TITLE)));
             taskList.add(task);
+            cursor.moveToNext();
         }
      //   String[] from={myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
      //   int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
