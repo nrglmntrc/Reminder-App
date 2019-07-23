@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 import java.util.ArrayList;
 
@@ -54,16 +52,19 @@ public class MainActivity extends AppCompatActivity {
         final Cursor cursor=db.query(myDbHelper.TABLE_NAME,column,null,null,null,null,null);
 
         ArrayList<Task> taskList=new ArrayList<>();
-        cursor.moveToFirst();
-        while(cursor!=null){
-            Task task=new Task();
-            task.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.TITLE)));
-            taskList.add(task);
-            cursor.moveToNext();
-        }
+          if(cursor!=null && cursor.getCount()!=0){
+              if(cursor.moveToFirst()){
+                  do{
+                      Task task= new Task();
+                      task.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.TITLE)));
+                      taskList.add(task);
+                  } while (cursor.moveToNext());
+              }
+          }
+
      //   String[] from={myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
-     //   int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
-     //   final SimpleCursorAdapter cursorAdapter=new SimpleCursorAdapter(context, R.layout.list_entry_underline,cursor,from,to, 0);
+        //   int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
+        //   final SimpleCursorAdapter cursorAdapter=new SimpleCursorAdapter(context, R.layout.list_entry_underline,cursor,from,to, 0);
 
         MyListviewAdapter adapter= new MyListviewAdapter(context,taskList);
         listView.setAdapter(adapter);
