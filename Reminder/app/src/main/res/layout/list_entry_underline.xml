@@ -19,7 +19,17 @@
             android:layout_toLeftOf="@+id/type"
             android:text="@string/title"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/holo_red_light" />
+            android:textColor="@color/blue"
+            />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@id/title"
+            android:layout_alignEnd="@+id/title"
+            android:layout_alignLeft="@id/title"
+            android:layout_alignRight="@+id/title" />
 
         <TextView
             android:id="@+id/type"
@@ -32,7 +42,7 @@
             android:layout_weight="0.24"
             android:text="@string/type_list_entry"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/holo_red_light" />
+            android:textColor="@android:color/holo_blue_light" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -40,7 +50,7 @@
         android:layout_height="fill_parent">
 
         <TextView
-            android:id="@+id/Detail"
+            android:id="@+id/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"

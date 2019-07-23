@@ -2,9 +2,6 @@ package com.nurgulmantarci.reminder;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,17 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
-    SQLiteDatabase db;
-    DbHelper myDbHelper;
     ListView listView;
     FloatingActionButton fab;
     Context context=this;
 
-    //TODO TASARIM: ListView Tasarımı daha profesyonel yapabilirsin, tarihi geçen işlerin üzeri çizilmeli.
+    //TODO TASARIM: ListView Tasarımı daha profesyonel yapabilirsin, tarihi geçen işlerin üzeri çizilmeli.(YAPILDI)
 
     //TODO MEDİAPLAYER: alarm sesi tekrarlı çalmalı, alarm arka planda çıkan activity olmamalı,(YAPILDI)
 
@@ -44,17 +38,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myDbHelper=new DbHelper(context);
-        db=myDbHelper.getWritableDatabase();
-
-        final String[] column={myDbHelper.C_ID,myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
-        final Cursor cursor=db.query(myDbHelper.TABLE_NAME,column,null,null,null,null,null);
-
-        String[] from={myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
-        int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
-        final SimpleCursorAdapter cursorAdapter=new SimpleCursorAdapter(context, R.layout.list_entry,cursor,from,to, 0);
-
-        listView.setAdapter(cursorAdapter);
+        MyListviewAdapter adapter= new MyListviewAdapter(context);
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
