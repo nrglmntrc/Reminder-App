@@ -2,8 +2,6 @@ package com.nurgulmantarci.reminder;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,17 +12,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
-    SQLiteDatabase db;
-    DbHelper myDbHelper;
     ListView listView;
     FloatingActionButton fab;
     Context context=this;
 
-    //TODO TASARIM: ListView Tasarımı daha profesyonel yapabilirsin, tarihi geçen işlerin üzeri çizilmeli.
+    //TODO TASARIM: ListView Tasarımı daha profesyonel yapabilirsin, tarihi geçen işlerin üzeri çizilmeli.(YAPILDI)
 
     //TODO MEDİAPLAYER: alarm sesi tekrarlı çalmalı, alarm arka planda çıkan activity olmamalı,(YAPILDI)
 

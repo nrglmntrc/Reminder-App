@@ -7,6 +7,7 @@ public class Task {
     private String type;
     private String time;
     private String date;
+    private String datetime;
 
     public String getTitle() {
         return title;
@@ -54,5 +55,13 @@ public class Task {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 }

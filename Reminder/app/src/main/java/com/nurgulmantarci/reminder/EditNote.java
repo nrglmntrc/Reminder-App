@@ -197,6 +197,8 @@ public class EditNote extends AppCompatActivity {
                     String timeString = formatter.format(new Date(calender.getTimeInMillis()));
                     SimpleDateFormat dateformatter = new SimpleDateFormat(getString(R.string.dateformate));
                     String dateString = dateformatter.format(new Date(calender.getTimeInMillis()));
+                    SimpleDateFormat sdf=new SimpleDateFormat(getString(R.string.dateformate)+" "+getString(R.string.hour_minutes));
+                    String datetimeString=sdf.format(new Date(calender.getTimeInMillis()));
 
                     Intent intent=null;
                     String alertTitle = etTitle.getText().toString();
@@ -222,11 +224,13 @@ public class EditNote extends AppCompatActivity {
                     alarmMgr.set(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), pendingIntent);
                     cv.put(dbHelper.TIME, timeString);
                     cv.put(dbHelper.DATE, dateString);
+                    cv.put(dbHelper.DATETIME,datetimeString);
 
                 }else{
                     cv.put(dbHelper.TYPE, getString(R.string.nothing));
                     cv.put(dbHelper.TIME,getString(R.string.Not_Set));
                     cv.putNull(dbHelper.DATE);
+                    cv.putNull(dbHelper.DATETIME);
                 }
 
                 db.update(dbHelper.TABLE_NAME, cv, dbHelper.C_ID + "=" + note_id, null);

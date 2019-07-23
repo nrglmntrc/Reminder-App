@@ -4,6 +4,8 @@ package com.nurgulmantarci.reminder;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MyListviewAdapter extends BaseAdapter {
 
@@ -19,6 +24,8 @@ public class MyListviewAdapter extends BaseAdapter {
     private ArrayList<Task> taskList;
     DbHelper myDbHelper;
     SQLiteDatabase db;
+    TextView txtTitle,txtDetail,txtType,txtDate,txtTime;
+    ImageView image;
 
 
     public MyListviewAdapter(Context context) {
@@ -27,7 +34,7 @@ public class MyListviewAdapter extends BaseAdapter {
         myDbHelper=new DbHelper(this.context);
         db=myDbHelper.getWritableDatabase();
 
-        final String[] column={myDbHelper.C_ID,myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
+        final String[] column={myDbHelper.C_ID,myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE,myDbHelper.DATETIME};
         final Cursor cursor=db.query(myDbHelper.TABLE_NAME,column,null,null,null,null,null);
 
         taskList=new ArrayList<>();
@@ -41,6 +48,7 @@ public class MyListviewAdapter extends BaseAdapter {
                     task.setType(cursor.getString(cursor.getColumnIndex(myDbHelper.TYPE)));
                     task.setTime(cursor.getString(cursor.getColumnIndex(myDbHelper.TIME)));
                     task.setDate(cursor.getString(cursor.getColumnIndex(myDbHelper.DATE)));
+                    task.setDatetime(cursor.getString(cursor.getColumnIndex(myDbHelper.DATETIME)));
                     taskList.add(task);
                 } while (cursor.moveToNext());
             }
@@ -66,8 +74,7 @@ public class MyListviewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
        View view= LayoutInflater.from(context).inflate(R.layout.listview_layout,parent,false);
-        TextView txtTitle,txtDetail,txtType,txtDate,txtTime;
-        ImageView image;
+
         txtTitle=view.findViewById(R.id.title);
         txtDetail=view.findViewById(R.id.Detail);
         txtType=view.findViewById(R.id.type);
@@ -82,14 +89,32 @@ public class MyListviewAdapter extends BaseAdapter {
         txtDate.setText(taskList.get(position).getDate());
 
         if(taskList.get(position).getType().equals(context.getString(R.string.alarm))){
-            image.setImageResource(R.drawable.ic_action_alarms);
+            image.setImageResource(R.drawable.alarm);
+            drawOn(position);
 
         }else if(taskList.get(position).getType().equals(context.getString(R.string.notify))){
            image.setImageResource(R.drawable.notification);
+           drawOn(position);
         }else{
             image.setImageResource(R.drawable.noalert);
         }
 
         return view;
+    }
+
+    private void drawOn(int position) {
+
+        try {
+            SimpleDateFormat sdf=new SimpleDateFormat(context.getString(R.string.dateformate)+" " +context.getString(R.string.hour_minutes));
+            Date dateAlert=sdf.parse(taskList.get(position).getDatetime());
+            Date now=new Date();
+            if(now.getTime()>dateAlert.getTime()){
+                txtTitle.setPaintFlags(txtTitle.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("ERROR",e.getLocalizedMessage());
+        }
+
     }
 }

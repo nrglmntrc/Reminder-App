@@ -74,7 +74,6 @@ public class CreateNote extends AppCompatActivity {
 
         etTitle=findViewById(R.id.etTitle);
         etDescription=findViewById(R.id.etDescription);
-//        mSpinner=findViewById(R.id.spinnerNoteType);
         pickerDate=findViewById(R.id.datePicker);
         pickerTime=findViewById(R.id.timePicker);
         txtTime=findViewById(R.id.txtTime);
@@ -128,6 +127,8 @@ public class CreateNote extends AppCompatActivity {
                    String timeString=formatter.format(new Date(calendar.getTimeInMillis()));
                    SimpleDateFormat dateFormatter=new SimpleDateFormat(getString(R.string.dateformate));
                    String dateString=dateFormatter.format(new Date(calendar.getTimeInMillis()));
+                   SimpleDateFormat sdf=new SimpleDateFormat(getString(R.string.dateformate)+" "+getString(R.string.hour_minutes));
+                   String datetimeString=sdf.format(new Date(calendar.getTimeInMillis()));
 
                    AlarmManager alarmManager= (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -156,11 +157,13 @@ public class CreateNote extends AppCompatActivity {
 
                    contentValues.put(myDbHelper.TIME,timeString);
                    contentValues.put(myDbHelper.DATE,dateString);
+                   contentValues.put(myDbHelper.DATETIME,datetimeString);
                }
                else {
                    contentValues.put(myDbHelper.TYPE,getString(R.string.nothing));
                    contentValues.put(myDbHelper.TIME,getString(R.string.Not_Set));
                    contentValues.putNull(myDbHelper.DATE);
+                   contentValues.putNull(myDbHelper.DATETIME);
                }
 
                db.insert(myDbHelper.TABLE_NAME,null,contentValues);
