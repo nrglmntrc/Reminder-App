@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                TextView txtnotId=view.findViewById(R.id.notId);
+                id=Long.parseLong(txtnotId.getText().toString());
+
                 Intent intent=new Intent(context, ViewNote.class);
                 intent.putExtra(getString(R.string.row_id),id);
                 startActivity(intent);

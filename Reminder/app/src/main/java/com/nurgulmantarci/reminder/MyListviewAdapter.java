@@ -24,7 +24,7 @@ public class MyListviewAdapter extends BaseAdapter {
     private ArrayList<Task> taskList;
     DbHelper myDbHelper;
     SQLiteDatabase db;
-    TextView txtTitle,txtDetail,txtType,txtDate,txtTime;
+    TextView txtTitle,txtDetail,txtType,txtDate,txtTime,txtNotId;
     ImageView image;
 
 
@@ -81,12 +81,15 @@ public class MyListviewAdapter extends BaseAdapter {
         txtDate=view.findViewById(R.id.time);
         txtTime=view.findViewById(R.id.date);
         image=view.findViewById(R.id.alarmImage);
+        txtNotId=view.findViewById(R.id.notId);
+
 
         txtTitle.setText(taskList.get(position).getTitle());
         txtDetail.setText(taskList.get(position).getDescription());
         txtType.setText(taskList.get(position).getType());
         txtTime.setText(taskList.get(position).getTime());
         txtDate.setText(taskList.get(position).getDate());
+        txtNotId.setText(taskList.get(position).get_id());
 
         if(taskList.get(position).getType().equals(context.getString(R.string.alarm))){
             image.setImageResource(R.drawable.alarm);
