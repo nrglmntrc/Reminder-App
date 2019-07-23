@@ -44,29 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        myDbHelper=new DbHelper(context);
-        db=myDbHelper.getWritableDatabase();
-
-        final String[] column={myDbHelper.C_ID,myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
-        final Cursor cursor=db.query(myDbHelper.TABLE_NAME,column,null,null,null,null,null);
-
-        ArrayList<Task> taskList=new ArrayList<>();
-          if(cursor!=null && cursor.getCount()!=0){
-              if(cursor.moveToFirst()){
-                  do{
-                      Task task= new Task();
-                      task.setTitle(cursor.getString(cursor.getColumnIndex(myDbHelper.TITLE)));
-                      taskList.add(task);
-                  } while (cursor.moveToNext());
-              }
-          }
-
-     //   String[] from={myDbHelper.TITLE,myDbHelper.DETAIL,myDbHelper.TYPE,myDbHelper.TIME,myDbHelper.DATE};
-        //   int[] to ={R.id.title, R.id.Detail, R.id.type, R.id.time, R.id.date};
-        //   final SimpleCursorAdapter cursorAdapter=new SimpleCursorAdapter(context, R.layout.list_entry_underline,cursor,from,to, 0);
-
-        MyListviewAdapter adapter= new MyListviewAdapter(context,taskList);
+        MyListviewAdapter adapter= new MyListviewAdapter(context);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
