@@ -104,4 +104,6 @@
 
     <string name="delayMessage">Alarm 5 Dakika Sonraya Ertelendi.</string>
 
+    <string name="setMusic">Lütfen listeden bir müzik seçiniz.</string>
+
 </resources>

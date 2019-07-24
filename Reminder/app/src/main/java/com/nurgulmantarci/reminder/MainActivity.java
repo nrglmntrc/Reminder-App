@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(context, CreateNote.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_settings:
+                Intent intent1=new Intent(context, SetMusic.class);
+                startActivity(intent1);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

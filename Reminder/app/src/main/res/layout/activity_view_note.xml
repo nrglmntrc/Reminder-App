@@ -39,7 +39,7 @@
                 android:text="@string/view_detail"
                 android:id="@+id/detail"
                 android:layout_margin="5dp"
-                android:textColor="@android:color/holo_orange_dark"
+                android:textColor="@android:color/holo_blue_light"
                 android:layout_weight="0.47" />
             <View
                 android:layout_width="match_parent"
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/note_type"
-                    android:textColor="@android:color/holo_orange_dark"
+                    android:textColor="@android:color/holo_red_light"
                     android:id="@+id/note_type_ans"
                     android:paddingLeft="10dp"
                     android:layout_gravity="center_horizontal" />

@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,8 +48,21 @@ public class Alert extends Activity implements View.OnClickListener {
         btnDelay.setOnClickListener(this);
 
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.best);
+
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
+//        try {
+//            FileInputStream fileInputStream=new FileInputStream("/data/data/com.nurgulmantarci.reminder/musics/ahraz.mp3");
+//            mediaPlayer.setDataSource(fileInputStream.getFD());
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//            Log.e("ERROR MUSIC",e.getLocalizedMessage());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Log.e("ERROR MUSIC",e.getLocalizedMessage());
+//        }
+
+
 
 
     }
