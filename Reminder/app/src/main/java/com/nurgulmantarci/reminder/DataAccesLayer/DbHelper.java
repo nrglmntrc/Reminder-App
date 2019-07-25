@@ -1,4 +1,4 @@
-package com.nurgulmantarci.reminder;
+package com.nurgulmantarci.reminder.DataAccesLayer;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

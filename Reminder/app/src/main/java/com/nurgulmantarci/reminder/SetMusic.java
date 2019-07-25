@@ -12,23 +12,22 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.nurgulmantarci.reminder.Adapters.CustomSpinnerAdapter;
+import com.nurgulmantarci.reminder.Entities.Music;
+
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class SetMusic extends Activity {
 
     Spinner spinner;
     Context context=this;
-    private ArrayAdapter<String> dataAdapterForMucis;
-    private ArrayList<String> titles;
     Button btnSave;
     MediaPlayer mediaPlayer=new MediaPlayer();
-    long thisId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,7 @@ public class SetMusic extends Activity {
         setContentView(R.layout.activity_set_music);
 
         btnSave=findViewById(R.id.btnSaveMusic);
-
-        titles=new ArrayList<>();
+        spinner=findViewById(R.id.spinnerMusic);
 
         ContentResolver contentResolver=getContentResolver();
         Uri uri= MediaStore.Audio.Media.INTERNAL_CONTENT_URI;
@@ -47,38 +45,63 @@ public class SetMusic extends Activity {
         }else if(!cursor.moveToFirst()){
             Toast.makeText(context, "No media on the device", Toast.LENGTH_SHORT).show();
         }else{
-
-                int titleColumn=cursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
-                int idColumn=cursor.getColumnIndex(MediaStore.Audio.Media._ID);
+            int lenght=cursor.getCount();
+            Music[] musicList=new Music[lenght];
                 do{
-                    thisId=cursor.getLong(idColumn);
-                    String thisString=cursor.getString(titleColumn);
-                    titles.add(thisString);
+                    musicList[cursor.getPosition()]=new Music();
+                    musicList[cursor.getPosition()].setId(cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media._ID)));
+                    musicList[cursor.getPosition()].setName(cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE)));
                 }while (cursor.moveToNext());
 
+            final CustomSpinnerAdapter adapter=new CustomSpinnerAdapter(context,android.R.layout.simple_spinner_item,musicList);
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    if(mediaPlayer.isPlaying()){
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                    Music music=adapter.getItem(position); // ***
+                    Uri contentUri= ContentUris.withAppendedId(MediaStore.Audio.Media.INTERNAL_CONTENT_URI,music.getId());
+                    play(context,contentUri);
+
+                }
+
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
         }
-
-
-        if(titles!=null){
-            spinner=findViewById(R.id.spinnerMusic);
-            dataAdapterForMucis=new ArrayAdapter<>(context,android.R.layout.simple_spinner_item,titles);
-            dataAdapterForMucis.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(dataAdapterForMucis);
-        }
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(context, position+" Seçildi.", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.release();
+    }
+
+    private void play(Context _context, Uri contentUri) {
+        mediaPlayer=new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        try {
+            mediaPlayer.setDataSource(_context,contentUri);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

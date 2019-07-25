@@ -13,15 +13,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nurgulmantarci.reminder.Adapters.MyListviewAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
     FloatingActionButton fab;
     Context context=this;
-
-    //TODO TASARIM: ListView Tasarımı daha profesyonel yapabilirsin, tarihi geçen işlerin üzeri çizilmeli.(YAPILDI)
-
-    //TODO MEDİAPLAYER: alarm sesi tekrarlı çalmalı, alarm arka planda çıkan activity olmamalı,(YAPILDI)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

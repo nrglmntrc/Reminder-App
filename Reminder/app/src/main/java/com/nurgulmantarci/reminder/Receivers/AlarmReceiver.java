@@ -1,8 +1,11 @@
-package com.nurgulmantarci.reminder;
+package com.nurgulmantarci.reminder.Receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.nurgulmantarci.reminder.Alert;
+import com.nurgulmantarci.reminder.R;
 
 public class AlarmReceiver extends BroadcastReceiver {
     @Override

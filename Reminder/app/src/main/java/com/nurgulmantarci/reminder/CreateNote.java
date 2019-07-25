@@ -12,18 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
+import com.nurgulmantarci.reminder.DataAccesLayer.DbHelper;
+import com.nurgulmantarci.reminder.Receivers.AlarmReceiver;
+import com.nurgulmantarci.reminder.Receivers.NotificationReceiver;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

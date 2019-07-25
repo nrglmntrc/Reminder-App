@@ -1,4 +1,4 @@
-package com.nurgulmantarci.reminder;
+package com.nurgulmantarci.reminder.Entities;
 
 public class Task {
     private String _id;

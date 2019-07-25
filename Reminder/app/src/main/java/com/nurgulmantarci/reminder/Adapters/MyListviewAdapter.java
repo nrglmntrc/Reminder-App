@@ -1,4 +1,4 @@
-package com.nurgulmantarci.reminder;
+package com.nurgulmantarci.reminder.Adapters;
 
 
 import android.content.Context;
@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nurgulmantarci.reminder.DataAccesLayer.DbHelper;
+import com.nurgulmantarci.reminder.Entities.Task;
+import com.nurgulmantarci.reminder.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

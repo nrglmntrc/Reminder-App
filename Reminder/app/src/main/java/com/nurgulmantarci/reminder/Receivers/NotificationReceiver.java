@@ -1,4 +1,4 @@
-package com.nurgulmantarci.reminder;
+package com.nurgulmantarci.reminder.Receivers;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+
+import com.nurgulmantarci.reminder.MainActivity;
+import com.nurgulmantarci.reminder.R;
 
 
 @SuppressWarnings("deprecation")

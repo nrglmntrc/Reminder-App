@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.nurgulmantarci.reminder.DataAccesLayer.DbHelper;
+
 
 public class ViewNote extends AppCompatActivity {
 
