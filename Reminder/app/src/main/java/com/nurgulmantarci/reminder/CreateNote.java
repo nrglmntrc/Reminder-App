@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.nurgulmantarci.reminder.DataAccesLayer.DbHelper;
 import com.nurgulmantarci.reminder.Receivers.AlarmReceiver;
@@ -176,6 +177,9 @@ public class CreateNote extends AppCompatActivity {
                Intent intent_mainAkc=new Intent(context, MainActivity.class);
                startActivity(intent_mainAkc);
                return true;
+
+
+
 
 
            default:

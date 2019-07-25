@@ -106,4 +106,6 @@
 
     <string name="setMusic">Lütfen listeden bir müzik seçiniz.</string>
 
+    <string name="action_set_ringtone">Zil Sesi Ayarla</string>
+
 </resources>

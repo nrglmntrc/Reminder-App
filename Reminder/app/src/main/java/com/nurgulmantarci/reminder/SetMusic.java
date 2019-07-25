@@ -27,6 +27,7 @@ public class SetMusic extends Activity {
     Context context=this;
     Button btnSave;
     MediaPlayer mediaPlayer=new MediaPlayer();
+    Long selectedID;
 
 
     @Override
@@ -65,7 +66,7 @@ public class SetMusic extends Activity {
                     Music music=adapter.getItem(position); // ***
                     Uri contentUri= ContentUris.withAppendedId(MediaStore.Audio.Media.INTERNAL_CONTENT_URI,music.getId());
                     play(context,contentUri);
-
+                    selectedID=music.getId();
                 }
 
 
@@ -79,7 +80,9 @@ public class SetMusic extends Activity {
             btnSave.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Music.selectedId=selectedID;
+                    finish();
+                    Toast.makeText(context, "Zil sesi değiştirildi", Toast.LENGTH_SHORT).show();
                 }
             });
 

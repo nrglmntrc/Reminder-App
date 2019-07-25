@@ -20,7 +20,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
 import com.nurgulmantarci.reminder.DataAccesLayer.DbHelper;
 import com.nurgulmantarci.reminder.Receivers.AlarmReceiver;
 import com.nurgulmantarci.reminder.Receivers.NotificationReceiver;

@@ -3,6 +3,7 @@ package com.nurgulmantarci.reminder.Entities;
 public class Music {
     private long id;
     private String name;
+    public static long selectedId=5000;
 
     public Music() {
         this.id=0;

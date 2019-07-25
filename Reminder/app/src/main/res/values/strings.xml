@@ -108,4 +108,6 @@
 
     <string name="setMusic">Please Select a Music From The List</string>
 
+    <string name="action_set_ringtone">Set Ringtone</string>
+
 </resources>
