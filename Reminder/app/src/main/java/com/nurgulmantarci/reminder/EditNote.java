@@ -210,7 +210,7 @@ public class EditNote extends AppCompatActivity {
                     }
                     intent.putExtra(getString(R.string.alert_title), alertTitle);
                     intent.putExtra(getString(R.string.alert_content), alertContent);
-                    pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+                    pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                     AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                     alarmMgr.set(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), pendingIntent);
                     cv.put(dbHelper.TIME, timeString);
