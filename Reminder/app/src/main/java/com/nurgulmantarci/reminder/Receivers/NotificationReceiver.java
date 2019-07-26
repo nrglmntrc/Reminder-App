@@ -24,7 +24,7 @@ public class NotificationReceiver extends BroadcastReceiver {
         PendingIntent detayEkraniIntent= PendingIntent.getActivity(context,0,detayEkrani,PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder= new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_action_alarms)
+                .setSmallIcon(R.drawable.bell)
                 .setContentTitle(Title)
                 .setContentText(content)
                 .setAutoCancel(true)

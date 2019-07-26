@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
     Context context=this;
 
     //TODO: Alarm sesi kaydedilen nota özel olarak değiştirilebilmeli..DATABASE E ringtone eklenerek yapılabilir.
-    //TODO: Bildirim İconu değiştirilmeli.
-    //TODO: Bildirimi test et
+    //TODO: Uygulama kapanınca alarm sesi eskisi oluyor.
+    //TODO: Spinner a gelen sesler kategorize edilmesi(Bildirim-Alarm)
+    //TODO: Spinner a sadece Internal Depodaki veriler geliyor..Onu external dan da seçilebilir yapabilirsin.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
