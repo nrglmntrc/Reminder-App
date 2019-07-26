@@ -198,23 +198,19 @@ public class EditNote extends AppCompatActivity {
                     Intent intent=null;
                     String alertTitle = etTitle.getText().toString();
                     String alertContent=etDescription.getText().toString();
+                    PendingIntent pendingIntent=null;
 
                     if (radioAlarm.isChecked()) {
                         cv.put(dbHelper.TYPE, getString(R.string.alarm));
-
                         intent = new Intent(context, AlarmReceiver.class);
-                        intent.putExtra(getString(R.string.alert_title), alertTitle);
-                        intent.putExtra(getString(R.string.alert_content),alertContent);
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
                     }  if (radioNotify.isChecked()) {
                         cv.put(dbHelper.TYPE, getString(R.string.notify));
-
                         intent = new Intent(context, NotificationReceiver.class);
-                        intent.putExtra(getString(R.string.alert_title), alertTitle);
-                        intent.putExtra(getString(R.string.alert_content), alertContent);
                     }
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+                    intent.putExtra(getString(R.string.alert_title), alertTitle);
+                    intent.putExtra(getString(R.string.alert_content), alertContent);
+                    pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
                     AlarmManager alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                     alarmMgr.set(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(), pendingIntent);
                     cv.put(dbHelper.TIME, timeString);

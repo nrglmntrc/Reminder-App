@@ -139,19 +139,17 @@ public class CreateNote extends AppCompatActivity {
                    if(radioAlarm.isChecked()){
                        contentValues.put(myDbHelper.TYPE,getString(R.string.alarm));
                        intent= new Intent(context, AlarmReceiver.class);
-                       intent.putExtra(getString(R.string.alert_title),alertTitle);
-                       intent.putExtra(getString(R.string.alert_content),alertContent);
 
                    }else if(radioNotify.isChecked()){
                        contentValues.put(myDbHelper.TYPE,getString(R.string.notify));
                        intent=new Intent(context, NotificationReceiver.class);
 
-                       intent.putExtra(getString(R.string.alert_title),alertTitle);
-                       intent.putExtra(getString(R.string.alert_content),alertContent);
                    }
 
+                //   intent.putExtra(getString(R.string.alert_title_create),alertTitle);
+                   intent.putExtra(getString(R.string.alert_title),alertTitle);
+                   intent.putExtra(getString(R.string.alert_content),alertContent);
                    PendingIntent pendingIntent=PendingIntent.getBroadcast(context,0,intent,0);
-
                    alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
 
                    contentValues.put(myDbHelper.TIME,timeString);

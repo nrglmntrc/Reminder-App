@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     Context context=this;
 
+    //TODO: Alarm sesi kaydedilen nota özel olarak değiştirilebilmeli..DATABASE E ringtone eklenerek yapılabilir.
+    //TODO: Bildirim İconu değiştirilmeli.
+    //TODO: Bildirimi test et
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

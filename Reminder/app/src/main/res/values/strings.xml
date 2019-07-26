@@ -40,6 +40,8 @@
 
     <string name="alert_title">title</string>
 
+    <string name="alert_title_create">title_create</string>
+
     <string name="Alertnotifty">"Alert: "</string>
 
     <string name="delete_title">Delete Selected Task</string>
